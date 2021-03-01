@@ -20,23 +20,34 @@ while(True):
     ret, frame = cap.read()
 
     # Image pre-processing
-    frame = mx.nd.array(cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)).astype('uint8')
+    mx_frame = mx.nd.array(cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)).astype('uint8')
     
-    result = detector.predict(frame)
+    result = detector.predict(mx_frame)
 
-    class_ids , class_names = result['predict_class'].factorize()
+    selected_result = result.query('predict_class=="head" & predict_score > 0.8')
 
-    bounding_boxes = np.array([[x[i] for i in x.keys()] for x in list(result['predict_rois'])])
+    bounding_boxes = [[x[i] for i in x.keys()] for x in list(selected_result['predict_rois'])]
 
-    scores = np.array(result['predict_score'])
+    blurred_img = cv2.blur(frame, (20,20))
+    mask = np.zeros(shape=(frame.shape[0], frame.shape[1], 1)).astype('uint8')
+
+    for i in range(len(selected_result)):
+        x_min = int(bounding_boxes[i][0]*frame.shape[1])
+        y_min = int(bounding_boxes[i][1]*frame.shape[0])
+        x_max = int(bounding_boxes[i][2]*frame.shape[1])
+        y_max = int(bounding_boxes[i][3]*frame.shape[0])
+
+        mask = cv2.rectangle(mask, (x_min, y_min), (x_max, y_max), 255, -1)
 
     # Display the result
-    img = utils.viz.cv_plot_bbox(frame, bounding_boxes, scores=scores, 
-                                labels=class_ids, class_names=class_names,
-                                absolute_coordinates=False,
-                                thresh=0.7)
+    mask_not = cv2.bitwise_not(mask)
+    img1 = cv2.bitwise_and(frame, frame, mask=mask_not)
+    img2 = cv2.bitwise_and(blurred_img, blurred_img, mask=mask)
 
-    utils.viz.cv_plot_image(img)
+    final_img = cv2.add(img1, img2)
+    final_img = cv2.cvtColor(final_img, cv2.COLOR_BGR2RGB)
+    
+    utils.viz.cv_plot_image(final_img)
     
     if cv2.waitKey(1) == 27:
         break
