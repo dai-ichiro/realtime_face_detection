@@ -26,7 +26,7 @@ while(True):
 
     selected_result = result.query('predict_class=="head" & predict_score > 0.8')
 
-    bounding_boxes = [[x[i] for i in x.keys()] for x in list(selected_result['predict_rois'])]
+    bounding_boxes = [[x[i] for i in x.keys()] for x in selected_result['predict_rois']]
 
     blurred_img = cv2.blur(frame, (20,20))
     mask = np.zeros(shape=(frame.shape[0], frame.shape[1], 1)).astype('uint8')
@@ -46,7 +46,7 @@ while(True):
 
     final_img = cv2.add(img1, img2)
     final_img = cv2.cvtColor(final_img, cv2.COLOR_BGR2RGB)
-    
+
     utils.viz.cv_plot_image(final_img)
     
     if cv2.waitKey(1) == 27:
