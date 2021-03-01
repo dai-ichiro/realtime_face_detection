@@ -12,7 +12,7 @@ https://touch-sp.hatenablog.com/entry/2021/03/01/234747
 
 Install AutoGluon
 ~~~
-pip install autogluon --pre
+pip install autogluon
 ~~~
 
 Download a pre-trained model from [google drive](https://drive.google.com/file/d/1mj8T8xuASlZtHk_Dlrz_VpWrbnGHdDh6/view?usp=sharing)
