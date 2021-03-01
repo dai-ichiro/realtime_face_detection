@@ -9,6 +9,12 @@ https://touch-sp.hatenablog.com/entry/2021/02/26/232334
 https://touch-sp.hatenablog.com/entry/2021/03/01/234747
 
 ### How to use pre-trained model
+
+Install AutoGluon
+~~~
+pip install autogluon --pre
+~~~
+
 Download a pre-trained model from [google drive](https://drive.google.com/file/d/1mj8T8xuASlZtHk_Dlrz_VpWrbnGHdDh6/view?usp=sharing)
 
 Run python scripts
