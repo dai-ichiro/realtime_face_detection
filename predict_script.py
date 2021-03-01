@@ -16,7 +16,7 @@ result = detector.predict(image_array)
 
 selected_result = result.query('predict_class=="head" & predict_score > 0.8')
 
-bounding_boxes = [[x[i] for i in x.keys()] for x in list(selected_result['predict_rois'])]
+bounding_boxes = [[x[i] for i in x.keys()] for x in selected_result['predict_rois']]
 
 np_image = image_array.asnumpy()
 
