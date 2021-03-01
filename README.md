@@ -6,6 +6,8 @@ https://touch-sp.hatenablog.com/entry/2021/01/17/023326
 
 https://touch-sp.hatenablog.com/entry/2021/02/26/232334
 
+https://touch-sp.hatenablog.com/entry/2021/03/01/234747
+
 ### How to use pre-trained model
 Download a pre-trained model from [google drive](https://drive.google.com/file/d/1mj8T8xuASlZtHk_Dlrz_VpWrbnGHdDh6/view?usp=sharing)
 
