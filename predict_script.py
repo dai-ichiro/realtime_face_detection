@@ -16,7 +16,7 @@ selected_result = result.query('predict_score > 0.8')
 
 class_ids , class_names = selected_result['predict_class'].factorize()
 
-bounding_boxes = np.array([[x[i] for i in x.keys()] for x in list(selected_result['predict_rois'])])
+bounding_boxes = np.array([[x[i] for i in x.keys()] for x in selected_result['predict_rois']])
 
 scores = np.array(selected_result['predict_score'])
 

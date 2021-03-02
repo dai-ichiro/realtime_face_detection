@@ -26,7 +26,7 @@ while(True):
 
     class_ids , class_names = result['predict_class'].factorize()
 
-    bounding_boxes = np.array([[x[i] for i in x.keys()] for x in list(result['predict_rois'])])
+    bounding_boxes = np.array([[x[i] for i in x.keys()] for x in result['predict_rois']])
 
     scores = np.array(result['predict_score'])
 
