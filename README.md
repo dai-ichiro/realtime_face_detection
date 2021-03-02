@@ -15,7 +15,7 @@ Install AutoGluon
 pip install autogluon
 ~~~
 
-Download a pre-trained model from [google drive](https://drive.google.com/file/d/1mj8T8xuASlZtHk_Dlrz_VpWrbnGHdDh6/view?usp=sharing)
+Download a pre-trained model from [google drive](https://drive.google.com/file/d/17cwy6tNR0N2eftNZDIG2JAl79D9LUgoa/view?usp=sharing)
 
 Run python scripts
 ~~~
