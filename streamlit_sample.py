@@ -8,7 +8,12 @@ import mxnet as mx
 
 from autogluon.vision import ObjectDetector
 
-detector = ObjectDetector.load('detector.ag')
+@st.cache
+def load_model():
+    model = ObjectDetector.load('detector.ag')
+    return model
+
+detector = load_model()
 
 st.markdown("# Realtime Face Detection")
 thresh = st.slider('Display Threshold', 0.5, 1.0, 0.9, step=0.1)
